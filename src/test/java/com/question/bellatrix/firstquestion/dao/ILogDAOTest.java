@@ -2,6 +2,7 @@ package com.question.bellatrix.firstquestion.dao;
 
 import com.question.bellatrix.firstquestion.DummyMock;
 import com.question.bellatrix.firstquestion.entity.Log;
+import com.question.bellatrix.firstquestion.enums.LevelEnum;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,12 +30,22 @@ public class ILogDAOTest {
     }
 
     @Test
-    public void insertLogTest() {
+    public void insertLevelMessageLogTest() {
         Log input = dummyMock.buildLog();
         Log result = logDAO.save(input);
 
         Assert.assertNotNull(result);
-        Assert.assertEquals(1, result.getId().intValue());
+        Assert.assertEquals(input.getMessage(), result.getMessage());
+        Assert.assertEquals(input.getLevel(), result.getLevel());
+    }
+
+    @Test
+    public void insertLevelErrorLogTest() {
+        Log input = dummyMock.buildLog();
+        input.setLevel(LevelEnum.ERROR.toString());
+        Log result = logDAO.save(input);
+
+        Assert.assertNotNull(result);
         Assert.assertEquals(input.getMessage(), result.getMessage());
         Assert.assertEquals(input.getLevel(), result.getLevel());
     }
