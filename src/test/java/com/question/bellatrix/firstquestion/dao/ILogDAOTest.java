@@ -3,6 +3,7 @@ package com.question.bellatrix.firstquestion.dao;
 import com.question.bellatrix.firstquestion.DummyMock;
 import com.question.bellatrix.firstquestion.entity.Log;
 import com.question.bellatrix.firstquestion.enums.LevelEnum;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
+import java.text.DateFormat;
+import java.util.Date;
+
+import static com.question.bellatrix.firstquestion.enums.LevelEnum.ERROR;
+import static com.question.bellatrix.firstquestion.enums.LevelEnum.MESSAGE;
+import static com.sun.org.apache.xalan.internal.xslt.EnvironmentCheck.WARNING;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -42,7 +49,7 @@ public class ILogDAOTest {
     @Test
     public void insertLevelErrorLogTest() {
         Log input = dummyMock.buildLog();
-        input.setLevel(LevelEnum.ERROR.toString());
+        input.setLevel(LevelEnum.ERROR.getLevel());
         Log result = logDAO.save(input);
 
         Assert.assertNotNull(result);

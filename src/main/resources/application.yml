@@ -1,0 +1,25 @@
+server:
+    port: 8090
+
+spring:
+    application:
+        name: bellatrix
+    datasource:
+        initialize: true
+        driverClassName: org.h2.Driver
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
+        username: sa
+        password:
+        platform: h2
+    jpa:
+        hibernate:
+            ddl-auto: update
+
+config:
+    logToDatabaseParam: 1
+    logToFileParam: 1
+    logToConsoleParam: 1
+    path-file: D:\temp\log\logFile.txt
+    logMessageParam: 1
+    logWarningParam: 1
+    logErrorParam: 1

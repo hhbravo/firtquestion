@@ -7,7 +7,7 @@ public class DummyMock {
 
     public Log buildLog() {
         Log log = new Log();
-        log.setLevel(LevelEnum.MESSAGE.toString());
+        log.setLevel(LevelEnum.MESSAGE.getLevel());
         log.setMessage("Test insert");
         return log;
     }
